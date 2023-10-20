@@ -1,0 +1,5 @@
+# according to Utilities/gdcmjpeg/README.GDCM.txt 
+# the embedded library is a variation of libjpeg that supports 
+# lossless compression 
+#
+libgdcm-tools: embedded-library usr/bin/gdcmpap3: libjpeg

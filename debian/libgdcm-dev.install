@@ -1,0 +1,16 @@
+usr/include/gdcm-3.*/gdcm*
+usr/include/gdcm-3.*/gdcmjpeg/12/*
+usr/include/gdcm-3.*/gdcmjpeg/16/*
+usr/include/gdcm-3.*/gdcmjpeg/8/*
+usr/include/gdcm-3.*/gdcmjpeg/j*.h
+usr/include/gdcm-3.*/zip*
+usr/lib/*/gdcm-3.*/*.cmake
+usr/lib/*/libgdcmCommon.so
+usr/lib/*/libgdcmDICT.so
+usr/lib/*/libgdcmDSED.so
+usr/lib/*/libgdcmIOD.so
+usr/lib/*/libgdcmMEXD.so
+usr/lib/*/libgdcmMSFF.so
+usr/lib/*/libgdcmjpeg12.so
+usr/lib/*/libgdcmjpeg16.so
+usr/lib/*/libgdcmjpeg8.so

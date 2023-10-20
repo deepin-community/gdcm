@@ -1,0 +1,10 @@
+--- a/Utilities/doxygen/CMakeLists.txt
++++ b/Utilities/doxygen/CMakeLists.txt
+@@ -160,6 +160,7 @@
+     install(FILES
+       ${CMAKE_CURRENT_BINARY_DIR}/latex/gdcm-${GDCM_VERSION}.pdf
+       DESTINATION ${GDCM_INSTALL_DOC_DIR}
++      RENAME gdcm-${GDCM_MAJOR_VERSION}.pdf
+     )
+     add_dependencies(DoxygenDoc GDCMDoxygenPDF)
+   else()
