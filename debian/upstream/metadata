@@ -1,0 +1,18 @@
+Repository: https://github.com/malaterre/GDCM.git
+Repository-Browse: https://github.com/malaterre/GDCM
+Bug-Database: https://sourceforge.net/p/gdcm/bugs/
+Bug-Submit: https://sourceforge.net/p/gdcm/bugs/new/
+Reference:
+ Author: >
+  David Rodríguez González and Trevor Carpenter and Jano I. van Hemert
+  and Joanna Wardlaw
+ Title: An open source toolkit for medical imaging de-identification
+ Journal: European Radiology
+ Year: 2010
+ Volume: 20
+ Number: 8
+ Pages: 1896-1904
+ DOI: 10.1007/s00330-010-1745-3
+ PMID: 20204640
+ URL: http://www.springerlink.com/content/j20844338623m167
+ eprint: http://www.springerlink.com/content/j20844338623m167/fulltext.pdf

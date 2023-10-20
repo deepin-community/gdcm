@@ -1,0 +1,6 @@
+usr/bin/gdcm2pnm
+usr/bin/gdcm2vtk
+usr/bin/gdcmviewer
+usr/share/man/man1/gdcm2pnm.1
+usr/share/man/man1/gdcm2vtk.1
+usr/share/man/man1/gdcmviewer.1

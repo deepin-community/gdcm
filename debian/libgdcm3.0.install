@@ -1,0 +1,2 @@
+usr/lib/*/libgdcm*.so.*
+usr/share/gdcm-3.*/XML

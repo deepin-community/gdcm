@@ -1,0 +1,11 @@
+#
+# This is a C++ library, using symbols files here is quite a challange
+#
+python3-vtkgdcm: no-symbols-control-file
+
+
+# This package provids a helper library for Python bindings 
+python3-vtkgdcm: package-name-doesnt-match-sonames
+
+# This seems to be needed for the python module 
+python3-vtkgdcm: link-to-shared-library-in-wrong-package

@@ -1,0 +1,17 @@
+Description: fix relative links now that gdcm is multi-arched
+Bug-Debian: https://bugs.debian.org/764029
+Author: Mathieu Malaterre <malat@debian.org>
+--- a/CMake/ExportConfiguration/GDCMConfig.cmake.in
++++ b/CMake/ExportConfiguration/GDCMConfig.cmake.in
+@@ -37,9 +37,9 @@
+ if(EXISTS ${SELF_DIR}/GDCMTargets.cmake)
+   # This is an install tree
+   include(${SELF_DIR}/GDCMTargets.cmake)
+-  get_filename_component(GDCM_INCLUDE_ROOT "${SELF_DIR}/../../@GDCM_INSTALL_INCLUDE_DIR@" ABSOLUTE)
++  get_filename_component(GDCM_INCLUDE_ROOT "${SELF_DIR}/../../../@GDCM_INSTALL_INCLUDE_DIR@" ABSOLUTE)
+   set(GDCM_INCLUDE_DIRS ${GDCM_INCLUDE_ROOT})
+-  get_filename_component(GDCM_LIB_ROOT "${SELF_DIR}/../../@GDCM_INSTALL_LIB_DIR@" ABSOLUTE)
++  get_filename_component(GDCM_LIB_ROOT "${SELF_DIR}/../../../@GDCM_INSTALL_LIB_DIR@" ABSOLUTE)
+   set(GDCM_LIBRARY_DIRS ${GDCM_LIB_ROOT})
+ else()
+   if(EXISTS ${SELF_DIR}/GDCMExports.cmake)

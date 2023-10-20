@@ -1,5 +1,1316 @@
-template-repository (1.0-1) unstable; urgency=medium
+gdcm (3.0.21-2) unstable; urgency=medium
 
-  * Initial release
+  * d/rules: Hack to work around FTBFS. Closes: #1042246
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Mathieu Malaterre <malat@debian.org>  Fri, 25 Aug 2023 15:21:27 +0200
+
+gdcm (3.0.21-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 3.0.21
+
+ -- Mathieu Malaterre <malat@debian.org>  Sun, 29 Jan 2023 15:21:24 +0100
+
+gdcm (3.0.20-3) unstable; urgency=medium
+
+  * d/python3-vtkgdcm: Fix hard-coded install path
+
+ -- Mathieu Malaterre <malat@debian.org>  Tue, 10 Jan 2023 10:04:18 +0100
+
+gdcm (3.0.20-2) unstable; urgency=medium
+
+  * Team upload.
+  * d/control: Run wrap-and-sort
+  * d/control: Add fake dependency to libvtk9-qt-dev
+
+ -- Mathieu Malaterre <malat@debian.org>  Tue, 10 Jan 2023 08:11:12 +0100
+
+gdcm (3.0.20-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 3.0.20
+
+ -- Mathieu Malaterre <malat@debian.org>  Thu, 05 Jan 2023 08:05:34 +0100
+
+gdcm (3.0.17-5) unstable; urgency=medium
+
+  [ Andreas Tille ]
+  * Switch to VTK9 and drop bindings for vtk for C# and Java
+    Closes: #1013156
+  * Build-Depends: default-jdk-headless
+
+  [ Mathieu Malaterre ]
+  * Team upload.
+  * d/rules: Do not build VTK documentation. Closes: #1013156
+  * d/control: Finish transition to VTK9
+
+ -- Mathieu Malaterre <malat@debian.org>  Mon, 02 Jan 2023 10:00:45 +0100
+
+gdcm (3.0.17-4) unstable; urgency=medium
+
+  * Team upload.
+  * d/rules: Yet another C# wrapping fix
+
+ -- Mathieu Malaterre <malat@debian.org>  Mon, 05 Sep 2022 14:15:50 +0200
+
+gdcm (3.0.17-3) unstable; urgency=medium
+
+  * Team upload.
+  * d/rules: Really fix vtkgdcm wrapping
+
+ -- Mathieu Malaterre <malat@debian.org>  Mon, 05 Sep 2022 12:05:25 +0200
+
+gdcm (3.0.17-2) unstable; urgency=medium
+
+  * Team upload.
+  * d/rules: Make sure to build vtk bindings
+
+ -- Mathieu Malaterre <malat@debian.org>  Mon, 05 Sep 2022 09:16:23 +0200
+
+gdcm (3.0.17-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 3.0.17
+
+ -- Mathieu Malaterre <malat@debian.org>  Mon, 05 Sep 2022 08:14:40 +0200
+
+gdcm (3.0.16-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 3.0.16
+  * d/patches: Remove patches applied usptream
+
+ -- Mathieu Malaterre <malat@debian.org>  Wed, 31 Aug 2022 09:18:45 +0200
+
+gdcm (3.0.14-1) unstable; urgency=medium
+
+  * Team upload.
+  * d/watch: Point to latest release
+  * Deal with new build target locations created by cmake
+    Closes: #1017027
+  * lintian-brush: Avoid explicitly specifying -Wl,--as-needed linker flag.
+
+ -- Andreas Tille <tille@debian.org>  Fri, 12 Aug 2022 09:22:00 +0200
+
+gdcm (3.0.13-3) unstable; urgency=medium
+
+  [ Mohammed Bilal ]
+  * change test data
+  * Fix autopkgtest for s390 (Closes: #1016450)
+
+  [ Mathieu Malaterre ]
+  * Team upload.
+  * d/patches: Fix doxygen/pdf generation. Closes: #1016331
+
+ -- Mathieu Malaterre <malat@debian.org>  Thu, 04 Aug 2022 08:29:13 +0200
+
+gdcm (3.0.13-2) unstable; urgency=medium
+
+  [ Mohammed Bilal ]
+  * Add autopkgtests
+  * Install example data
+  * add example data to d/s/include-binaries
+  * Add copyright for test data
+
+  [ Mathieu Malaterre ]
+  * Team upload.
+  * d/control: Bump Std-Vers to 4.6.1, no changes needed
+  * d/t/run-unit-test: Fix up the unit test
+
+ -- Mathieu Malaterre <malat@debian.org>  Wed, 06 Jul 2022 11:32:54 +0200
+
+gdcm (3.0.13-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 3.0.13
+  * d/control: Run wrap-and-sort
+  * d/control: Ship new CLI gdcmclean
+
+ -- Mathieu Malaterre <malat@debian.org>  Mon, 20 Jun 2022 10:27:49 +0200
+
+gdcm (3.0.12-1) unstable; urgency=medium
+
+  * Team upload.
+  * d/patches: Fix compilation on big-endian arch
+  * New upstream version 3.0.12
+  * d/patches: Remove patch applied upstream
+
+ -- Mathieu Malaterre <malat@debian.org>  Mon, 04 Apr 2022 08:32:57 +0200
+
+gdcm (3.0.11-1) unstable; urgency=medium
+
+  [ Andreas Tille ]
+  * Bump versioned Build-Depends: libcharls-dev (>= 2.0)
+  * Make sure debhelper level 13 will not be overridden by recreating d/control
+
+  [ Mathieu Malaterre ]
+  * Team upload.
+  * New upstream version 3.0.11
+
+ -- Mathieu Malaterre <malat@debian.org>  Tue, 29 Mar 2022 11:50:17 +0200
+
+gdcm (3.0.10-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 3.0.10
+  * d/*.ini: Remove php binding leftovers
+  * d/patches: Remove patches applied upstream
+
+ -- Mathieu Malaterre <malat@debian.org>  Tue, 23 Nov 2021 10:20:42 +0100
+
+gdcm (3.0.8-4) unstable; urgency=medium
+
+  [ Mathieu Malaterre ]
+  * d/rules: Build manpages before installing them. Closes: #996820
+
+ -- Andreas Tille <tille@debian.org>  Tue, 19 Oct 2021 18:10:50 +0200
+
+gdcm (3.0.8-3) unstable; urgency=medium
+
+  * Team upload.
+  * Fix watchfile to detect new versions on github (routine-update)
+  * New upstream version
+  * Standards-Version: 4.6.0 (routine-update)
+  * debhelper-compat 13 (routine-update)
+  * remove redundant debian/gbp.conf
+  * Add missing include to enable build with gcc-11
+  * Install gdcm-sharp.dll.xml
+
+ -- Andreas Tille <tille@debian.org>  Tue, 19 Oct 2021 09:45:54 +0200
+
+gdcm (3.0.8-2) unstable; urgency=medium
+
+  * Team upload.
+  * d/rules: adjust GDCMTargets-*.cmake to detect libvtkgdcmsharpglue.so and
+    vtkgdcmPython.cpython-*-*.so properly.
+    Closes: #989296
+
+ -- Étienne Mollier <emollier@debian.org>  Sat, 31 Jul 2021 10:32:44 +0200
+
+gdcm (3.0.8-1) unstable; urgency=medium
+
+  [ Gert Wollny ]
+  * New upstream version 3.0.8
+
+  [ Alexander Volkov ]
+  * debian/{rules, control}: Don't build CLI bindings when the "nocil" build
+    profile is enabled
+
+  [ Michael R. Crusoe ]
+  * debian/watch: upstream now distributes source releases on GitHub
+  * debian/upstream/metadata: document GitHub for source, SF for bugs
+  * debian/control: libvtkgdcm-java: don't build on ports without java
+    Closes: #976360
+
+  [ Andreas Tille ]
+  * Standards-Version: 4.5.1
+
+ -- Andreas Tille <tille@debian.org>  Thu, 17 Dec 2020 20:30:50 +0100
+
+gdcm (3.0.7-3) unstable; urgency=medium
+
+  * d/control: update mono deps Closes: #968176
+
+ -- Gert Wollny <gewo@debian.org>  Mon, 17 Aug 2020 08:24:50 +0200
+
+gdcm (3.0.7-2) unstable; urgency=medium
+
+  * d/patch: add a patch to rename pdf based on major version
+
+ -- Gert Wollny <gewo@debian.org>  Sat, 08 Aug 2020 15:05:07 +0200
+
+gdcm (3.0.7-1) unstable; urgency=medium
+
+  * New upstream version 3.0.7
+  * d/patches: Update patches for new upstream version
+  * d/patches: Update vtk doc patch for new upstream version"
+
+ -- Gert Wollny <gewo@debian.org>  Fri, 07 Aug 2020 21:22:46 +0200
+
+gdcm (3.0.5-1) unstable; urgency=medium
+
+  [ Andreas Tille ]
+  * Standards-Version: 4.5.0 (routine-update)
+  * debhelper-compat 12 (routine-update)
+  * Drop useless get-orig-source target (routine-update)
+  * Respect DEB_BUILD_OPTIONS in override_dh_auto_test target (routine-
+    update)
+  * Remove trailing whitespace in debian/changelog (routine-update)
+  * Remove trailing whitespace in debian/control (routine-update)
+  * Remove trailing whitespace in debian/copyright (routine-update)
+  * Remove trailing whitespace in debian/rules (routine-update)
+  * Add salsa-ci file in favour of .gitlab-ci.yml
+  * Trim trailing whitespace.
+  * Wrap long lines in changelog entries: 2.0.10-2.
+  * Use secure URI in debian/watch.
+  * Build-Depends: swig (instead of swig3.0)
+    Closes: #952597
+
+  [ Samuel Thibault ]
+  * Build on ports without java
+    Closes: #947990
+
+  [ Gert Wollny ]
+  * New upstream version 3.0.5
+  * d/patches: Update for new release
+  * d/p: Add upstream patch to fix build with swig4
+  * d/gdcm-doc.doc-base: update pdf version
+
+ -- Gert Wollny <gewo@debian.org>  Sun, 22 Mar 2020 19:29:36 +0100
+
+gdcm (3.0.4-2) unstable; urgency=medium
+
+  * d/control: Depend on vtk7-doc instead of vtk6-doc
+
+ -- Gert Wollny <gewo@debian.org>  Thu, 07 Nov 2019 12:25:42 +0100
+
+gdcm (3.0.4-1) unstable; urgency=medium
+
+  * New upstream version 3.0.4
+
+ -- Gert Wollny <gewo@debian.org>  Fri, 01 Nov 2019 17:17:49 +0100
+
+gdcm (3.0.3-1~exp2) experimental; urgency=medium
+
+  * d/control: Add Breaks/Replaces for *gdcm2-dev Closes: #943765
+  * d/* rename lib*gdcm3-dev to lib*gdcm-dev
+
+ -- Gert Wollny <gewo@debian.org>  Thu, 31 Oct 2019 12:35:25 +0100
+
+gdcm (3.0.3-1~exp1) experimental; urgency=medium
+
+  [Gert Wollny]
+  * d/watch: update to version 4 of watch file
+  * New upstream version 3.0.3
+  * d/ Update to new 3.0 so version
+  * d/p: Update patches and remove patches that were applied
+    upstream
+  * ci: Get some log output on failure
+  * d/rules: Fix cmake file patchup code (Thanks Mathieu)
+  * Move to vtk7, Closes: #939670
+  * d/ci: don't silence build
+  * d/rules: use ninja build system
+  * d/libgdcm3.0.docs: Fix file name
+  * d/gdcm-doc*: Fix version of PDF file
+  * d/control: Fix dev package names
+
+  [Steffenn Möller]
+  * d/u/metadata: yamllint
+
+ -- Gert Wollny <gewo@debian.org>  Sun, 20 Oct 2019 15:16:32 +0200
+
+gdcm (2.8.9-1~exp1) experimental; urgency=medium
+
+  * New upstream version 2.8.9
+  * d/p: remove xsltproc maxdepth and libpoppler patches
+
+ -- Gert Wollny <gewo@debian.org>  Mon, 29 Apr 2019 11:26:01 +0200
+
+gdcm (2.8.8-9) unstable; urgency=medium
+
+  * d/*.symbols: remove symbols file, with C++ libraries this
+    just doesn't work well enough.
+
+ -- Gert Wollny <gewo@debian.org>  Tue, 26 Mar 2019 22:07:17 +0100
+
+gdcm (2.8.8-8) unstable; urgency=medium
+
+  * d/libvtkgdcm2.8a.symbols: Attempt to fix symbols on mips/mipsel
+
+ -- Gert Wollny <gewo@debian.org>  Tue, 26 Mar 2019 19:35:20 +0100
+
+gdcm (2.8.8-7) unstable; urgency=medium
+
+  [ Gianfranco Costamagna ]
+  * Fixup symbols file, mark as optional some symbols disappearing
+    with a -O3 build
+
+ -- Gert Wollny <gewo@debian.org>  Fri, 08 Mar 2019 11:33:29 +0100
+
+gdcm (2.8.8-6) unstable; urgency=medium
+
+  * d/p/fiX_charls_2: Fix compilation with CharLS-2.0
+
+ -- Gert Wollny <gewo@debian.org>  Sun, 13 Jan 2019 09:26:00 +0100
+
+gdcm (2.8.8-5) unstable; urgency=medium
+
+  * Team upload.
+  * Upload to unstable.
+  * Set Rules-Requires-Root:no.
+  * Improve the libvtkgdcm2.8a symbols patters to not include a symbol that
+    should not be optional.  Thanks to jrtc27 for the feedback.
+  * Add patch from Gianfranco Costamagna to fix build with poppler 0.71.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 28 Nov 2018 12:13:53 +0100
+
+gdcm (2.8.8-4) experimental; urgency=medium
+
+  * Team upload.
+  * Update the symbols file including changes for ppc64, ppc64el, s390x.
+  * Rename the libvtkgdcm2.8 package to libvtkgdcm2.8a, following the ABI
+    break happened in version 2.8.7-2.  Closes: #914483
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sun, 25 Nov 2018 14:09:59 +0100
+
+gdcm (2.8.8-3) experimental; urgency=medium
+
+  * Team upload.
+  * Introduce a .symbols file for libvtkgdcm2.
+  * Drop d/source/options setting compression to xz, now the default.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sat, 24 Nov 2018 16:31:23 +0100
+
+gdcm (2.8.8-2) unstable; urgency=medium
+
+  * Fix upload (forgot to pull latest changes)
+  * Remove d/p/5083513138fc90aa602b93293d2e44ae73e883b0.patch
+    (applied upstream)
+
+ -- Gert Wollny <gewo@debian.org>  Sun, 28 Oct 2018 18:05:07 +0100
+
+gdcm (2.8.8-1) unstable; urgency=medium
+
+  * New upstream version 2.8.8
+  * d/p: remove fix-vtkjava-build-dir.patch (applied upstream)
+  * d/p: update patches
+  * d/gdcm-doc.doc-base: update version number
+
+ -- Gert Wollny <gewo@debian.org>  Sun, 28 Oct 2018 09:08:38 +0100
+
+gdcm (2.8.7-5) unstable; urgency=medium
+
+  * Team upload
+  * d/p/5083513138fc90aa602b93293d2e44ae73e883b0.patch
+    - grab an additional fix from Ubuntu
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 22 Oct 2018 12:48:10 +0200
+
+gdcm (2.8.7-4) unstable; urgency=medium
+
+  * Team upload
+  * debian/patches/5083513138fc90aa602b93293d2e44ae73e883b0.patch:
+    - adapt to new poppler 0.69 with upstream patch
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 22 Oct 2018 11:35:13 +0200
+
+gdcm (2.8.7-3) unstable; urgency=medium
+
+  * d/control: Add conflict with python2 packages, Closes: #908472
+
+ -- Gert Wollny <gewo@debian.org>  Mon, 01 Oct 2018 20:48:07 +0200
+
+gdcm (2.8.7-2) unstable; urgency=medium
+
+  [ Andreas Tille ]
+  * Remove myself from Uploaders
+
+  [ Gert Wollny ]
+  * switch to python3 Closes: #906535
+  * d/control.in: Depend on python3 versions of packages
+  * d/dontrol: Build-depend only on default python3 version,  the
+    current gdcm build  only supports one python version at a time
+  * d/.gitlab: build from master branch
+
+ -- Gert Wollny <gewo@debian.org>  Sun, 09 Sep 2018 13:36:59 +0200
+
+gdcm (2.8.7-1python3exp1) experimental; urgency=medium
+
+  * Experimental upload with python3 support
+
+ -- Gert Wollny <gewo@debian.org>  Sat, 30 Jun 2018 12:02:59 +0200
+
+gdcm (2.8.7-1) unstable; urgency=medium
+
+  * d/control: Change back to default-jdk
+  * New upstream version 2.8.7
+  * d/p/fix-vtkjava-build-dir Closes: #894371
+
+ -- Gert Wollny <gewo@debian.org>  Sat, 30 Jun 2018 11:41:20 +0200
+
+gdcm (2.8.6-2) unstable; urgency=medium
+
+  * d/p/gdcm-fix-xslt-maxdepth.patch set maxdeph Closes: #901519
+  * d/control: remove useless python version field
+
+ -- Gert Wollny <gewo@debian.org>  Tue, 19 Jun 2018 23:58:51 +0200
+
+gdcm (2.8.6-2) unstable; urgency=medium
+
+  * d/rules: Add explicit java home path on arm* and
+    powerpc ppc64el
+
+ -- Gert Wollny <gewo@debian.org>  Wed, 16 May 2018 01:04:30 +0200
+
+gdcm (2.8.6-1) unstable; urgency=medium
+
+  * New upstream version 2.8.6
+  * d/gdcm-doc.doc-base: update version
+  * d/rules: update default java version on all archs
+  * d/p/03: update for VTK-6.3
+  * d/p/use_swig..: use new swig_add_library for csharp
+  * d/rules: update default java version on all archs
+  * d/control: Force openjdk-8 to work around #894371
+  * d/control: update vcs-url's
+
+ -- Gert Wollny <gewo@debian.org>  Sun, 29 Apr 2018 10:30:49 +0200
+
+gdcm (2.8.5-1~exp1) experimental; urgency=medium
+
+  * Move to vtk7 and python3
+  * New upstream version 2.8.5
+  * d/gdcm-doc.doc-base: Update version umber in pdf file
+
+ -- Gert Wollny <gewo@debian.org>  Tue, 10 Apr 2018 09:04:33 +0200
+
+gdcm (2.8.4-2) unstable; urgency=medium
+
+  * d/rules: update default java version on all archs
+
+ -- Gert Wollny <gewo@debian.org>  Mon, 02 Apr 2018 19:12:36 +0200
+
+gdcm (2.8.4-1) unstable; urgency=medium
+
+  * New upstream version 2.8.4
+  * d/gdcm-doc.doc-base: Update version number
+  * d/p: Unforce -std=c++98, use the compilers default instead
+
+ -- Gert Wollny <gewo@debian.org>  Sun, 19 Nov 2017 08:56:15 +0100
+
+gdcm (2.8.3-1) unstable; urgency=medium
+
+  * New upstream version 2.8.3
+  * d/control: Update standards to 4.1.1 (no changes needed)
+  * d/gdcm-doc.doc-base: update pdf file version
+
+ -- Gert Wollny <gewo@debian.org>  Wed, 04 Oct 2017 14:12:45 +0000
+
+gdcm (2.8.2-3) unstable; urgency=medium
+
+  * d/rules: rename gdcmsharpglue.so only when needed.
+    Closes: #871023
+
+ -- Gert Wollny <gewo@debian.org>  Mon, 07 Aug 2017 07:28:44 +0000
+
+gdcm (2.8.2-2) unstable; urgency=medium
+
+  * d/rules: ignore csharp rules on archs that don't support it
+
+ -- Gert Wollny <gewo@debian.org>  Sun, 06 Aug 2017 08:36:59 +0000
+
+gdcm (2.8.2-1) unstable; urgency=medium
+
+  * New upstream version 2.8.2
+  * d/rules: correct name of glue library
+  * d/gdcm-doc.install: correct intsall location for pdf file
+  * d/copyright: update copyright for gdcmopenjpeg and delete
+    wxWidgets section
+
+ -- Gert Wollny <gewo@debian.org>  Tue, 01 Aug 2017 06:39:36 +0000
+
+gdcm (2.8.0-1~exp1) experimental; urgency=medium
+
+  * New upstream version 2.8.0
+  * d/* update package name to libversion 2.8
+  * d/control: Update standards version to 4.0.0
+  * d/copyright: Add copyright for new files in Utilities/gdcmcharls
+
+ -- Gert Wollny <gewo@debian.org>  Wed, 05 Jul 2017 07:34:37 +0000
+
+gdcm (2.6.8-1) unstable; urgency=medium
+
+  * upload to unstable
+
+ -- Gert Wollny <gewo@debian.org>  Sun, 18 Jun 2017 07:06:25 +0000
+
+gdcm (2.6.8-1~exp1) experimental; urgency=medium
+
+  * New upstream version 2.6.8
+  * Update d/p/02_fixhurd.patch
+
+ -- Gert Wollny <gewo@debian.org>  Tue, 23 May 2017 10:49:45 +0000
+
+gdcm (2.6.7-1~exp1) experimental; urgency=medium
+
+  * New upstream version 2.6.7
+  * d/control: Depend on libssl-dev Closes: #850896
+  * d/control,d/rules: Drop -dbg packages Closes: #842678
+  * d/control: Update GW uploader email
+
+ -- Gert Wollny <gewo@debian.org>  Fri, 03 Mar 2017 17:47:13 +0000
+
+gdcm (2.6.6-3) unstable; urgency=medium
+
+  * re-create debian/control, Closes: #839934
+  * d/rules: enable hardening
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Tue, 06 Dec 2016 08:38:52 +0000
+
+gdcm (2.6.6-2) unstable; urgency=medium
+
+  * Depend on libssl1.0-dev (Related to #828308)
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Mon, 07 Nov 2016 11:02:08 +0100
+
+gdcm (2.6.6-1) unstable; urgency=medium
+
+  * New upstream version 2.6.6
+  * Update patches and drop format-error.patch
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Wed, 12 Oct 2016 10:08:55 +0000
+
+gdcm (2.6.5-2) unstable; urgency=medium
+
+  * d/rules: Set default java version to 1.5 on hurd-i386
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Tue, 23 Aug 2016 16:58:00 +0000
+
+gdcm (2.6.5-1) unstable; urgency=medium
+
+  * New upstream release, Closes: #834802
+    Closes: #828964
+  * d/p/format-error: Add patch to satisfy -Wformat-error
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Sat, 20 Aug 2016 17:52:37 +0000
+
+gdcm (2.6.4-1) unstable; urgency=medium
+
+  * Imported Upstream version 2.6.4, Closes: #829664
+  * update patches and remove patches 05-12 because they were applied
+    upstream
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Mon, 11 Jul 2016 14:14:40 +0000
+
+gdcm (2.6.3-6) unstable; urgency=medium
+
+  * d/control,d/p/10+11: compile against openjpeg-2.1 Closes: #825307
+  * d/control, d/p/12: update to and require lincharls-dev >= 1.1.0
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Sun, 29 May 2016 13:18:50 +0000
+
+gdcm (2.6.3-5) unstable; urgency=medium
+
+  * d/control* +d/rules +d/php5-*:
+    Really remove php bindings on all archs
+  * d/control*: Update standards version to 3.9.8
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Thu, 05 May 2016 09:39:26 +0000
+
+gdcm (2.6.3-4) unstable; urgency=medium
+
+  * d/p/08: Add patch to compile against VTK 6.3
+  * d/p/09: Set minimum requirements for JAVA to 1.5 Closes: 821959
+  * d/control+rules: remove php bindings since the upcoming php7 is
+    not yet supported by upstream (swig doesn't support php7 yet).
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Thu, 21 Apr 2016 10:53:01 +0000
+
+gdcm (2.6.3-3) unstable; urgency=medium
+
+  * d/control*, d/rules: Re-instate java package
+  * d/p: Add patch 07 to not try to link against vtk-java modules
+  * d/control*: Update standards version to 3.9.7
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Sat, 27 Feb 2016 19:28:48 +0000
+
+gdcm (2.6.3-2) unstable; urgency=medium
+
+  * [d96d77] d/p/03: Update patch to use new VTK perl scripts
+  * [8ef9c3] d/control: Tighten dependency on vtk6-doc
+  * [4d67e1] d/p/06: Add patch description
+  * [c88176] d/control: update standards version
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Fri, 19 Feb 2016 20:19:32 +0000
+
+gdcm (2.6.3-1) unstable; urgency=medium
+
+  * New upstream version
+  * d/b: Add patch 06 to tolerate buggy dicom files. Related: #753809
+  * d/control: changed docbook-xls to the now needed docbook-xsl-ns
+  * d/gdcm-doc.*: remove micro version from pdf docu, there will never
+    be two versions of the file installed.
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Tue, 02 Feb 2016 05:04:21 +0100
+
+gdcm (2.6.2-3) unstable; urgency=medium
+
+  * d/control: Add dependency on php5-common for php5-* Closes: #810668
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Sun, 10 Jan 2016 22:03:57 +0100
+
+gdcm (2.6.2-2) unstable; urgency=medium
+
+  * Run doxygen only if gdcm-doc-*.deb is really build. Closes: #746268
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Fri, 08 Jan 2016 21:03:22 +0100
+
+gdcm (2.6.2-1) unstable; urgency=medium
+
+  * New upstream release
+  * d/p: remove patches 05 and 06 because they were applied upstream
+  * d/control: Add xsltproc and docbook-xsl to dependencies for
+    building man-pages
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Fri, 08 Jan 2016 20:03:04 +0100
+
+gdcm (2.6.1-3) unstable; urgency=medium
+
+  * Correctly set VCS path also in d/contol.in
+  * Add patch to fix regression that made ITK test suite fail.
+    Related: #808491
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Mon, 21 Dec 2015 15:56:33 +0100
+
+gdcm (2.6.1-2) unstable; urgency=medium
+
+  * Add patch 05_ to clean Doxygen file to remove obsolete values.
+  * Remove powerpc and add ppc64el to mono-bindings Closes: #808475
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Sun, 20 Dec 2015 18:34:37 +0100
+
+gdcm (2.6.1-1) unstable; urgency=medium
+
+  * New Upstream version
+  * Remove patches now applied upstream:
+    - toplevelskip.patch
+    - enable-vtk6-bindings.patch
+  * remov the signing patches because the actual problems
+    was with the dh_strip_nondeterminism:
+    - add-csharp-keyfile-from-commandline.patch
+    - vtkgdcm-sharp-siging.patch
+  * Update doc-base to index.xhtml and version number in pdf file name.
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Sun, 13 Dec 2015 20:42:16 +0100
+
+gdcm (2.6.0+dfsg-1) unstable; urgency=medium
+
+  [Gert Wollny]
+  * new upstream version. Closes: #797738
+  * Apply patch provided by Mathieu (see below) Closes: #797673
+  * d/* update all files to use 2.6 instead of 2.4
+  * Transition to use vtk6, Related: #798164
+  * remove java bindings because they depend on libvtk*-java but
+    vtk6 currently doesn't provide these bindings Related: 798963
+  * Add patch enable-vtk6-bindings.patch to correct bindings for VTK6
+  * Add patch linkvtkdoc.patch to use compressed vtk6-doc helpers
+    Related: #751395,  #751412
+  * Add patches to properly sign C# files
+  * d/copyright update copyrights to satisfy DEP5
+  * add dependency on dh-python, Closes: #797655
+  * removing some static VC++ libs from tarball to make it follow DFSG
+  * add lintian overrides for
+    - embedded javascript (rationale: src:doxygen/debian/Readme.jquery)
+  * Add build-conflict: libopenjp2-7-dev, Closes: #801228
+
+  [Mathieu Malaterre]
+  * Do not use activiz.net anymore
+
+  [Andreas Tille]
+  * Switched to Sébastien Jodogne's correct e-mail
+
+ -- Gert Wollny <gw.fossdev@gmail.com>  Fri, 16 Oct 2015 18:21:58 +0200
+
+gdcm (2.4.4-4) unstable; urgency=medium
+
+  [ Andreas Tille ]
+  * Standard-Version: 3.9.6
+  * Add Sébastien Jodogne <s.jodogne@gmail.com> as Uploader
+
+  [ Sébastien Jodogne ]
+  * Build-Depends: castxml instead of gccxml
+    Closes: #777868, #791508
+
+ -- Sébastien Jodogne <s.jodogne@gmail.com>  Fri, 07 Aug 2015 08:56:02 +0200
+
+gdcm (2.4.4-3) unstable; urgency=medium
+
+  * Fix issue introduced by multiarch switch. Closes: #764029
+
+ -- Mathieu Malaterre <malat@debian.org>  Mon, 06 Oct 2014 09:08:02 +0200
+
+gdcm (2.4.4-2) unstable; urgency=low
+
+  * Make package multiarch capable
+  * Fix lintian warnings about d/copyright
+
+ -- Mathieu Malaterre <malat@debian.org>  Tue, 30 Sep 2014 13:04:57 +0200
+
+gdcm (2.4.4-1) unstable; urgency=low
+
+  * New upstream. Closes: #759957
+
+ -- Mathieu Malaterre <malat@debian.org>  Wed, 24 Sep 2014 10:19:37 +0200
+
+gdcm (2.4.3-1) unstable; urgency=low
+
+  * New upstream. Closes: #745074
+  * Refresh patch, removed applied upstreams:
+    - d/p/upstream_gdcminfo-support-poppler-0.25.1.patch
+    - d/p/upstream_cmake-proper-handle-the-extra-poppler-CFLAGS.patch
+
+ -- Mathieu Malaterre <malat@debian.org>  Tue, 29 Jul 2014 15:15:22 +0200
+
+gdcm (2.4.2-1.1) sid; urgency=medium
+
+  * Non-maintainer upload.
+  * Backport upstream commits 096e5b84d9e241b6e5203904846454f7d7058e01 and
+    1da0cab121782f1a63a84a9bcc90da6c337dc2e3 to support building with
+    Poppler 0.26.x; patches
+    upstream_cmake-proper-handle-the-extra-poppler-CFLAGS.patch and
+    upstream_gdcminfo-support-poppler-0.25.1.patch. (Closes: #751432)
+
+ -- Pino Toscano <pino@debian.org>  Thu, 03 Jul 2014 22:34:02 +0200
+
+gdcm (2.4.2-1) sid; urgency=low
+
+  * New upstream
+  * Remove piwiki footer. Fix lintian error privacy-breach-logo/piwik
+  * Remove patch applied upstream:
+    - d/p/socket.patch
+
+ -- Mathieu Malaterre <malat@debian.org>  Mon, 07 Apr 2014 11:25:27 +0200
+
+gdcm (2.4.1-2) sid; urgency=low
+
+  * Upload to sid
+
+ -- Mathieu Malaterre <malat@debian.org>  Mon, 20 Jan 2014 12:45:07 +0100
+
+gdcm (2.4.1-1) experimental; urgency=low
+
+  * New upstream: 2.4.1. Closes: #727154
+  * Update d/copyright. Closes: #729748
+  * Bump Std-Vers to 3.9.5, no changes needed
+  * Refreshed patches, removed patches applied upstream
+
+ -- Mathieu Malaterre <malat@debian.org>  Tue, 10 Dec 2013 09:42:08 +0100
+
+gdcm (2.4.0-2) experimental; urgency=low
+
+  * Use socket++ system installed lib. Closes: #727154
+  * Update d/copyright. Closes: #729748
+  * Compile code with java 1.5. Closes: #729515
+  * Compile gdcmpap3 command line application
+
+ -- Mathieu Malaterre <malat@debian.org>  Tue, 03 Dec 2013 08:08:13 +0100
+
+gdcm (2.4.0-1) experimental; urgency=low
+
+  * New upstream
+    - upload to experimental, since change of API
+
+ -- Mathieu Malaterre <malat@debian.org>  Thu, 17 Oct 2013 11:08:37 +0200
+
+gdcm (2.2.4-1) unstable; urgency=low
+
+  * New upstream. Closes: #713988
+
+ -- Mathieu Malaterre <malat@debian.org>  Thu, 11 Jul 2013 12:09:37 +0200
+
+gdcm (2.2.3-2) unstable; urgency=low
+
+  * Fix compilation with multi-arch python
+  * Fix GDCM import (new CMake generated files breaks compat). Closes: #711214
+
+ -- Mathieu Malaterre <malat@debian.org>  Thu, 06 Jun 2013 17:32:30 +0200
+
+gdcm (2.2.3-1) unstable; urgency=low
+
+  * New upstream
+  * Bump to Std-Vers 3.9.4, no changes needed
+  * Fix issues with armhf (again)
+
+ -- Mathieu Malaterre <malat@debian.org>  Tue, 02 Apr 2013 09:00:35 +0200
+
+gdcm (2.2.2-1) unstable; urgency=low
+
+  * New upstream
+    - refresh patches
+  * Use tar.bz2 for source upstream
+  * Update d/copyright (missing utfcpp license). Closes: #690373
+
+ -- Mathieu Malaterre <malat@debian.org>  Fri, 15 Mar 2013 10:45:55 +0100
+
+gdcm (2.2.1-1.1) sid; urgency=low
+
+  * Non-maintainer upload.
+  * Remove armhf from mono architectures (closes: #699379)
+
+ -- Julien Cristau <jcristau@debian.org>  Tue, 05 Feb 2013 19:25:05 +0100
+
+gdcm (2.2.1-1) unstable; urgency=low
+
+  * New upstream: 2.2.1. Update to lastest DICOM standard (2011)
+    Remove patches applied upstream:
+     - removedocfromall.patch
+     - fixgcj.patch
+     - fixgcj2.patch
+     - stableapi.patch
+     - activiz.net.patch
+     - kfreebsdfix.patch
+     - removepythonlink.patch
+     - fixundef.patch
+     - removesonamepython.patch
+     - sonameprops.patch
+     - csharpfixes.patch
+     - removetransitivepython.patch
+
+ -- Mathieu Malaterre <malat@debian.org>  Thu, 20 Sep 2012 11:06:19 +0200
+
+gdcm (2.2.0-13) unstable; urgency=medium
+
+  [ Andreas Tille ]
+  * debian/upstream: Add citation
+
+  [ Mathieu Malaterre ]
+  * Fix typo in d/control. Closes: #675685
+  * Update d/control to make sure to use swig 2.0.7
+  * Fix d/rules to pass CPFLAGS properly (hardening)
+
+ -- Mathieu Malaterre <malat@debian.org>  Thu, 14 Jun 2012 16:43:52 +0200
+
+gdcm (2.2.0-12) unstable; urgency=low
+
+  * Fix installation issue of PDF doc, on buildd. Closes: #672863
+  * Aggregate *.doc-base.* into a single *.doc-base
+
+ -- Mathieu Malaterre <malat@debian.org>  Fri, 18 May 2012 18:28:50 +0200
+
+gdcm (2.2.0-11) unstable; urgency=low
+
+  * Remove SONAME from python module, as per policy
+  * Build PHP5 bindings
+  * Fix issue with python 3.2 vs 2.7
+  * Adding a gdcm-doc package
+
+ -- Mathieu Malaterre <malat@debian.org>  Tue, 08 May 2012 21:28:05 +0200
+
+gdcm (2.2.0-10) unstable; urgency=low
+
+  * Fix some undefined symbols (reported upstream)
+  * Use javahelper to resolve java dependencies
+
+ -- Mathieu Malaterre <malat@debian.org>  Wed, 11 Apr 2012 16:09:49 +0200
+
+gdcm (2.2.0-9) unstable; urgency=low
+
+  * Another attempt to really fix hurd-i386 compilation,
+  * Remove DMUA:yes since not needed,
+  * Use my debian alias
+
+ -- Mathieu Malaterre <malat@debian.org>  Fri, 30 Mar 2012 09:24:16 +0200
+
+gdcm (2.2.0-8) unstable; urgency=medium
+
+  * Fix error introduced by new cmake 2.8.7 behavior for monolithic export file.
+    Closes: #664188
+  * Yet another compilation fix for hurd-i386.
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 20 Mar 2012 13:45:17 +0100
+
+gdcm (2.2.0-7) unstable; urgency=low
+
+  * Another compilation fix for hurd-i386.
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 19 Mar 2012 09:49:39 +0100
+
+gdcm (2.2.0-6) unstable; urgency=low
+
+  * Yet another compilation fix for hurd-i386.
+  * add missing *.installcligac files.
+  * use new libpoppler-private-dev (poppler transition). Closes: #660101
+  * Bump Standards-Version to 3.9.3. No changes needed
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Sun, 26 Feb 2012 20:43:56 +0100
+
+gdcm (2.2.0-5) unstable; urgency=low
+
+  * Another compilation fix for hurd-i386.
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Thu, 02 Feb 2012 16:41:42 +0100
+
+gdcm (2.2.0-4) unstable; urgency=low
+
+  * Fix compilation on hurd-i386 (PATH_MAX).
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Thu, 02 Feb 2012 13:41:43 +0100
+
+gdcm (2.2.0-3) unstable; urgency=low
+
+  * Another compilation fix for kFreeBSD.
+  * Use a generated d/control to prevent mistakes.
+  * Adding Break/Replace for libgdcm2.0-dbg. Closes: #658218
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Wed, 01 Feb 2012 14:55:07 +0100
+
+gdcm (2.2.0-2) unstable; urgency=low
+
+  * Fix compilation on kFreeBSD.
+  * Add a check to match DEB_MONO_ARCHS value.
+  * Update list of supported arch for mono (remove s390). Closes: #657779
+  * Remove explicit link to libpython2.7. Closes: #658137
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 31 Jan 2012 17:03:26 +0100
+
+gdcm (2.2.0-1) experimental; urgency=low
+
+  * New upstream. Closes: #655783, #656969
+    - Adding DICOM Q/R tools
+  * Sign the API. Closes: #531181
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 24 Jan 2012 11:58:09 +0100
+
+gdcm (2.0.19-3) unstable; urgency=low
+
+  * Another attempt at fixing kFreeBSD:
+    - debian/patches/fixgcj2.patch
+  * Prefer SVG output over PNG for doxygen:
+    - debian/patches/doxygen_svg.patch
+  * Work around bug #654587 and explicitly B-D on ghostscript
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Wed, 04 Jan 2012 14:25:57 +0100
+
+gdcm (2.0.19-2) unstable; urgency=low
+
+  * Fix compilation on kFreeBSD when using gcj:
+    - debian/patches/fixgcj.patch
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Wed, 04 Jan 2012 09:58:37 +0100
+
+gdcm (2.0.19-1) unstable; urgency=low
+
+  * New upstream: 2.0.19
+  * Adding back missing gdcm2pnm tools
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 03 Jan 2012 14:13:03 +0100
+
+gdcm (2.0.18-7) unstable; urgency=low
+
+  * Cleanup cmake transitive linking issue with VTK. Closes: #650116
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 19 Dec 2011 10:26:44 +0100
+
+gdcm (2.0.18-6) unstable; urgency=low
+
+  * Cleanup compilation flags settings
+  * Build against vtk 5.8.0. Fix DSO issues.
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 08 Nov 2011 15:36:02 +0100
+
+gdcm (2.0.18-5) unstable; urgency=low
+
+  * Properly compile against a single python version (X-Python-Version)
+  * Forward CFLAGS/CXXFLAGS to cmake
+  * Remove dep on paraview-dev for now
+  * Remove deprecated XB-Python-Version
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 10 Oct 2011 15:38:45 +0200
+
+gdcm (2.0.18-4) unstable; urgency=low
+
+  * One cannot call --with cli when mono is not available
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Wed, 07 Sep 2011 20:20:59 +0200
+
+gdcm (2.0.18-3) unstable; urgency=low
+
+  * Redo d/rules files to use dh(8)
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 06 Sep 2011 17:12:24 +0200
+
+gdcm (2.0.18-2) unstable; urgency=low
+
+  * Remove call to dh_makeclilibs since GDCM does not install in the GAC
+  * Fix URL for ViewVC convention
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 06 Sep 2011 12:07:12 +0200
+
+gdcm (2.0.18-1) unstable; urgency=low
+
+  * New upstream
+  * Use system CharLS library. Closes: #631099
+  * Bump Standard Version to 3.9.2, no change needed
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Sat, 03 Sep 2011 16:45:59 +0200
+
+gdcm (2.0.17-3.1) unstable; urgency=low
+
+  * Non-maintainer upload
+  * debian/rules: call dh_clideps, so valid dependencies are tracked.
+    (Closes: #632747)
+
+ -- Jo Shields <directhex@apebox.org>  Mon, 11 Jul 2011 23:58:54 +0100
+
+gdcm (2.0.17-3) unstable; urgency=low
+
+  * patches/ptrdiff.patch: New.  Include stddef.h, to define ptrdiff_t.
+    Closes: #624902.
+
+ -- Steve M. Robbins <smr@debian.org>  Sun, 08 May 2011 23:28:20 -0500
+
+gdcm (2.0.17-2) unstable; urgency=low
+
+  * Use doxygen-latex package. Closes: #616216
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 08 Mar 2011 13:46:41 +0100
+
+gdcm (2.0.16-2.1) unstable; urgency=low
+
+  * Non maintainer upload.
+  * FTBFS with --no-copy-dt-needed-entries. Patch taken from Ubuntu.
+    Closes: #614953.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 26 Feb 2011 17:42:27 +0100
+
+gdcm (2.0.17-1) experimental; urgency=low
+
+  * New upstream
+  * Do not use system OpenJPEG v1, prefer OpenJPEG v2
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Fri, 28 Jan 2011 10:19:57 +0100
+
+gdcm (2.0.16-2) unstable; urgency=low
+
+  * Fix FTBFS where doxygen/dot threading is not working (Closes: #593578)
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Thu, 19 Aug 2010 12:38:58 +0200
+
+gdcm (2.0.16-1) unstable; urgency=low
+
+  * New upstream
+  * Fix lintian warning (non-dev-pkg-with-shlib-symlink)
+  * Update Standard-Version to 3.9.1
+  * Switch to dpkg-source 3.0 (quilt) format
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Wed, 18 Aug 2010 11:18:08 +0200
+
+gdcm (2.0.15-1) unstable; urgency=low
+
+  * New upstream
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Fri, 09 Jul 2010 15:36:01 +0200
+
+gdcm (2.0.14-9) unstable; urgency=low
+
+  * Completely remove findjni.cmake from GDCM.
+    Failure on hppa was caused by dangling symlink
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Wed, 05 May 2010 16:01:23 +0200
+
+gdcm (2.0.14-8) unstable; urgency=low
+
+  * FTBFS on hppa. Fix the local findjni.cmake to search include dir properly
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 04 May 2010 16:24:41 +0200
+
+gdcm (2.0.14-7) unstable; urgency=low
+
+  * FTBFS on hppa. Enhance the local findjni.cmake to search in hppa subdir
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 04 May 2010 10:17:25 +0200
+
+gdcm (2.0.14-6) unstable; urgency=low
+
+  * FTBFS on mipsel and armel, unable to find java. Closes: #579959
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 03 May 2010 19:12:03 +0200
+
+gdcm (2.0.14-5) unstable; urgency=low
+
+  * Fix a lintian issue about embedded-libjpeg
+  * Fix CMake viral dependency propagation . Closes: #579642
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Fri, 30 Apr 2010 12:43:35 +0200
+
+gdcm (2.0.14-4) unstable; urgency=low
+
+  * Fix more lintian issue about debhelper-but-no-misc-depends
+  * Fix python issue. Closes: #567694
+  * Use virtual package for jpeg, tiff and expat
+  * Update debian policy
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 08 Feb 2010 22:06:23 +0100
+
+gdcm (2.0.14-3) unstable; urgency=low
+
+  * csc has been removed, renamed to mono-csc. Closes: #563020
+  * Fix some lintian issues (${misc:Depends} and XS-Python-Version)
+  * Fix FTBS due to broken symlink in libvtk-java. Closes: #564246
+  * Update control file to deal with cmake/vtk transitive behavior.
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Sun, 17 Jan 2010 18:35:45 +0100
+
+gdcm (2.0.14-2) unstable; urgency=low
+
+  * Fix issue on buildd machine with cmake 2.8.
+  * Move the python library to the python-vtkgdcm package
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 16 Nov 2009 11:52:45 +0100
+
+gdcm (2.0.14-1) unstable; urgency=low
+
+  * New upstream.
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Thu, 12 Nov 2009 16:38:52 +0100
+
+gdcm (2.0.13-2) unstable; urgency=low
+
+  * Fix SONAME for gdcmDict / gdcmcharls. Closes: #553410
+  * Fix some lintian issue (need to escape double dots).
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Sun, 01 Nov 2009 16:05:47 +0100
+
+gdcm (2.0.13-1) unstable; urgency=low
+
+  * New release: GDCM 2.0.13. Closes: #552552
+  * Fix debian layout to deal with new CharLS (JPEG-LS) library.
+  * Fix issue with java covariant return type. Closes: #542253
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 27 Oct 2009 09:57:23 +0100
+
+gdcm (2.0.12-11) unstable; urgency=low
+
+  * XML files are part of the runtime lib (used by gdcminfo as ressources).
+  * Recommends pvrg-jpeg
+  * Suggest dicom3tools
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Tue, 28 Jul 2009 10:32:00 +0200
+
+gdcm (2.0.12-10) unstable; urgency=low
+
+  * Reactivate build on armel since mono team fixed the FTBS issue.
+  * Fix lintian: dh_clean -k is deprecated. Use dh_prep
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Thu, 16 Jul 2009 16:00:06 +0200
+
+gdcm (2.0.12-9) unstable; urgency=low
+
+  * Fix FTBS on hppa, with gcj 4.4. javac does not support -cp cmd line option
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Thu, 16 Jul 2009 14:38:58 +0200
+
+gdcm (2.0.12-8) unstable; urgency=low
+
+  * Fix issue with LD_LIBRARY_PATH and dh_shlibdeps on private libs
+    This should fix the FTBS on alpha/buildd system:
+    install: cannot change owner and permissions of `debian/libgdcm-cil/DEBIAN':
+    Operation not permitted
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Wed, 15 Jul 2009 13:53:23 +0200
+
+gdcm (2.0.12-7) unstable; urgency=low
+
+  * Fix debhelper-script-needs-versioned-build-depends
+  * Add dependency on ghostscript
+  * Remove mips (mono not available)
+  * Fix lintian missing-dependency-on-libc on libvtkgdcm-java package
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 13 Jul 2009 12:20:04 +0200
+
+gdcm (2.0.12-6) unstable; urgency=low
+
+  * dh_shlibdeps -Nlibvtkgdcm-java so that we avoid issues with private libs.
+  * Bug #533198, moved vtk Java libraries from /usr/lib to /usr/lib/jni. Support
+    both old and new layout.
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 13 Jul 2009 10:39:12 +0200
+
+gdcm (2.0.12-5) unstable; urgency=low
+
+  * Yet-Another-Attempt at fixing armel/alpha. Thanks to George Danchev
+    (debian-mentors) for patch.
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 13 Jul 2009 09:24:25 +0200
+
+gdcm (2.0.12-4) unstable; urgency=low
+
+  * Another attempt at fixing armel
+  * Fix swig/C# wrapper to load gdcmsharpglue (instead of gdcm)
+  * Reactivate the missing gcc44.patch (gdcm svn rev: 5852).
+    Thanks to Andrea Gasparini for report
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Wed, 08 Jul 2009 09:48:32 +0200
+
+gdcm (2.0.12-3) unstable; urgency=low
+
+  * Fix build on system without mono
+  * Remove armel (for now)
+  * Fix remaining lintian issue
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 06 Jul 2009 10:00:10 +0200
+
+gdcm (2.0.12-2) unstable; urgency=low
+
+  * Update to gdcm 2.0.12. Closes: #534694
+  * Fix Build-Depends so that csc is found. Closes: #535567
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Fri, 03 Jul 2009 11:38:23 +0200
+
+gdcm (2.0.12-1) unstable; urgency=low
+
+  * Skipping 2.0.11 packaging as it does not provides anything more than 2.0.12
+  * Adding libvtkgdcm-cil, libgdcm-java and libvtkgdcm-java which provides,
+    namely the CLI binding to VTK/GDCM, the Java binding to gdcm and the Java
+    binding to VTK/GDCM.
+  * New cmd line tools: gdcmanon, gdcmpdf and gdcmgendir
+  * Adding man pages for all tools
+  * Transition of Mono 2.0. Closes: #534297
+  * Adding a special patch for the Eclipse Java Compiler 0.894_R34x as it does
+    not support covariant return type.
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 15 Jun 2009 16:56:43 +0200
+
+gdcm (2.0.10-7) unstable; urgency=low
+
+  * Try to fix /usr/bin/csc vs mono-devel >= 2.0
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Wed, 24 Jun 2009 18:32:56 +0200
+
+gdcm (2.0.10-6) unstable; urgency=low
+
+  * Fix Path to GMCS to csc compiler.
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Wed, 24 Jun 2009 16:18:03 +0200
+
+gdcm (2.0.10-5) unstable; urgency=low
+
+  * Fix python-policy: python-support (>= 0.5.3)
+  * Fix cli-policy: cli-common-dev (>= 0.4.4) (copied from gmime2.4)
+  * Handle "Mono Architecture" [!alpha !m68k !hppa]
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 22 Jun 2009 17:57:18 +0200
+
+gdcm (2.0.10-4) unstable; urgency=low
+
+  * Adding another patch for gcc 4.4. Closes: #529276
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Mon, 22 Jun 2009 14:33:55 +0200
+
+gdcm (2.0.10-3) unstable; urgency=low
+
+  * Do not build libgdcm-cil when mono is not available. Closes: #531174
+  * Apply patch from Dominique Belhachemi to fix parallel builds.
+  * Remove suggests on dicom3tools, pvrg until they are packaged.
+
+ -- Mathieu Malaterre <mathieu.malaterre@gmail.com>  Sat, 30 May 2009 16:17:30 +0200
+
+gdcm (2.0.10-2) unstable; urgency=low
+
+  [ Steve M. Robbins ]
+  * debian/libgdcm2.docs: Rename to ...
+  * debian/libgdcm2.0.docs: New.
+
+  [ Mathieu Malaterre ]
+  * debian/patches/gdcm210_tagbackport.patch: Patch released on gdcm 2.0.10 svn
+    tag
+  * debian/patches/dcm210_branchbackport.patch: Patch released on gdcm-2-0
+    branch Closes: #529276.
+  * Use vtk/5.2.1-4, Closes: #529193
+
+ -- Mathieu Malaterre (malat) <mathieu.malaterre@gmail.com>  Mon, 18 May 2009 14:31:47 +0200
+
+gdcm (2.0.10-1) unstable; urgency=low
+
+  * Initial upload to Debian.  Closes: #509021.
+
+ -- Steve M. Robbins <smr@debian.org>  Wed, 22 Apr 2009 00:38:48 -0500
