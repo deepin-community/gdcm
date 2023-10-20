@@ -1,4 +1,181 @@
 #!/usr/bin/make -f
+# export DH_VERBOSE=1
+
+
+# results in linking error
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+# to please dpkg-shlibdeps and java private libs in /usr/lib/jni
+LD_LIBRARY_PATH:=$(LD_LIBRARY_PATH):/usr/lib/jni
+
+WITH_CLI =
+DEB_WRAP_CSHARP = 0
+ifeq (,$(filter $(DEB_BUILD_PROFILES),nocil))
+# required for DEB_MONO_ARCHS (debian/control.in)
+-include /usr/share/mono/mono-archs.make
+# Mono is not available for all Debian architectures.
+ifeq ($(shell dh_listpackages | grep -q cil && echo yes),yes)
+WITH_CLI = --with cli
+DEB_WRAP_CSHARP = 1
+# dpkg-shlibdeps needs to know where is libKitware.mummy.Runtime.Unmanaged.so
+LD_LIBRARY_PATH:=$(LD_LIBRARY_PATH):/usr/lib/cli/Kitware.mummy.Runtime-1.0
+endif
+endif
+export LD_LIBRARY_PATH
+
+DEFAULT_JAVA_VERSION=1.8
+ifeq ($(DEB_BUILD_ARCH),$(filter $(DEB_BUILD_ARCH),hppa hurd-i386 kfreebsd-i386 kfreebsd-amd64))
+  DEFAULT_JAVA_VERSION=
+endif
+
+ifneq ($(DEFAULT_JAVA_VERSION),)
+CMAKE_EXTRA_FLAGS += -DGDCM_WRAP_JAVA:BOOL=ON \
+                     -DVTKGDCM_WRAP_JAVA:BOOL=ON \
+                     -DGDCM_DEFAULT_JAVA_VERSION:STRING=$(DEFAULT_JAVA_VERSION)
+endif
+
+# set JAVA path on arm, doesn't seem to find it otherwise
+ifeq ($(DEB_BUILD_ARCH),$(filter $(DEB_BUILD_ARCH),armhf armel arm64 powerpc ppc64el))
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-$(DEB_BUILD_ARCH)
+endif
+
+
+# deduce documentation option (build-indep target)
+ifeq "" "$(filter %-doc,$(shell dh_listpackages))"
+  BUILDDOC = OFF
+else
+  BUILDDOC = ON
+endif
 
 %:
-	dh $@
+	dh $@ $(WITH_CLI) --with python3 --with javahelper  --buildsystem=cmake+ninja
+
+PYVER 	 := $(shell py3versions -dv)
+PV	 := $(shell echo $(PYVER) | sed 's/\.//')
+PYMODDIR := /usr/lib/$(shell py3versions -d)
+VTKVERS=$(shell apt-cache policy libvtk9-dev | grep "Installed:" | cut -d: -f2 | cut -d' ' -f2 | cut -d- -f1 | cut -d. -f1-2)
+
+# GDCM_DOCUMENTATION:BOOL=ON is required to build man page (build target)
+# Need to make sure to build using the same vtk/python version:
+CMAKE_EXTRA_FLAGS += -DCMAKE_SKIP_RPATH=ON \
+		-DCMAKE_BUILD_TYPE:STRING=None \
+		-DGDCM_DOXYGEN_NO_FOOTER:BOOL=ON \
+		-DGDCM_BUILD_APPLICATIONS:BOOL=ON \
+		-DGDCM_DOCUMENTATION:BOOL=$(BUILDDOC) \
+		-DGDCM_VTK_DOCUMENTATION:BOOL=OFF \
+		-DDOCUMENTATION_DOWNLOAD_VTK_TAGFILE:BOOL=OFF \
+		-DGDCM_PDF_DOCUMENTATION:BOOL=$(BUILDDOC) \
+		-DGDCM_BUILD_SHARED_LIBS:BOOL=ON \
+		-DGDCM_WRAP_PYTHON:BOOL=ON \
+		-DVTKGDCM_WRAP_PYTHON:BOOL=ON \
+		-DVTKGDCM_WRAP_JAVA:BOOL=OFF \
+		-DGDCM_WRAP_CSHARP:BOOL=$(DEB_WRAP_CSHARP) \
+		-DGDCM_WRAP_PHP:BOOL=OFF \
+		-DGDCM_USE_PVRG:BOOL=ON \
+		-DGDCM_USE_SYSTEM_PVRG:BOOL=ON \
+		-DGMCS_EXECUTABLE:FILEPATH=/usr/bin/mono-csc \
+		-DEXPAT_LIBRARY:FILEPATH=/usr/lib/$(DEB_HOST_MULTIARCH)/libexpat.so \
+		-DGDCM_BUILD_TESTING:BOOL=OFF \
+		-DGDCM_USE_SYSTEM_EXPAT:BOOL=ON \
+		-DGDCM_USE_SYSTEM_UUID:BOOL=ON \
+		-DGDCM_USE_SYSTEM_ZLIB:BOOL=ON \
+		-DGDCM_USE_SYSTEM_OPENJPEG:BOOL=ON \
+		-DGDCM_USE_SYSTEM_OPENSSL:BOOL=ON \
+		-DGDCM_USE_SYSTEM_CHARLS:BOOL=ON \
+		-DGDCM_USE_SYSTEM_POPPLER:BOOL=ON \
+		-DGDCM_USE_SYSTEM_LIBXML2:BOOL=ON \
+		-DGDCM_USE_SYSTEM_JSON:BOOL=ON \
+		-DGDCM_USE_PARAVIEW:BOOL=OFF \
+		-DGDCM_USE_ACTIVIZ:BOOL=OFF \
+		-DGDCM_USE_SYSTEM_PAPYRUS3:BOOL=ON \
+		-DGDCM_USE_SYSTEM_SOCKETXX:BOOL=ON \
+		-DPython_ADDITIONAL_VERSIONS:STRING=$(PYVER) \
+		-DGDCM_INSTALL_DOC_DIR:STRING=share/doc/gdcm-doc \
+		-DTAGFILES:STRING="/usr/share/doc/vtk-doc/html/vtk$(VTKVERS).tag=/usr/share/doc/vtk-doc/html/" \
+		-DGDCM_INSTALL_PYTHONMODULE_DIR:STRING=lib/python/dist-packages \
+		-DGDCM_INSTALL_JAVAMODULE_DIR:STRING=lib/$(DEB_HOST_MULTIARCH)/jni \
+		-DGDCM_NO_PYTHON_LIBS_LINKING:BOOL=ON \
+                -DGDCM_NO_VTKJAVA_LIBS_LINKING:BOOL=ON \
+		-DGDCM_INSTALL_LIB_DIR:STRING=lib/$(DEB_HOST_MULTIARCH) \
+		-DGDCM_USE_VTK:BOOL=ON \
+		-DVTK_JAVA_JAR=/usr/share/java/vtk9.jar
+
+
+override_dh_auto_configure:
+	dh_auto_configure -- $(CMAKE_EXTRA_FLAGS)
+
+override_dh_auto_build-indep:
+	dh_auto_build -- DoxygenDoc DOCBOOK_MANPAGES
+
+override_dh_auto_build-arch:
+	dh_auto_build
+
+override_dh_auto_install-arch:
+	# See #664188 and #711214
+	find obj-* -name "GDCMTargets*.cmake" -exec sed -i -e "s/FATAL_ERROR/STATUS/g" \{\} \;
+	# See #989296
+	find obj-* -name "GDCMTargets*.cmake" -exec \
+	    sed -i -e 's@/lib/python/dist-packages/vtkgdcmPython.so@/lib/python3/dist-packages/vtkgdcmPython.cpython-$(PV)-$(DEB_HOST_MULTIARCH).so@' \
+	         \{\} \;
+
+	dh_auto_install
+	# PHP
+	#mkdir -p debian/tmp/$(PHP_EX)
+	#mkdir -p debian/tmp/usr/share/php
+	#mv debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/gdcm.php debian/tmp/usr/share/php
+	#mv debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/gdcm.so debian/tmp/$(PHP_EX)
+	#mv debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/vtkgdcm.php debian/tmp/usr/share/php
+	#mv debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/vtkgdcm.so debian/tmp/$(PHP_EX)
+	#echo "php:Depends=phpapi-`php-config5 --phpapi`" >> debian/php5-gdcm.substvars
+	#echo "php:Depends=phpapi-`php-config5 --phpapi`" >> debian/php5-vtkgdcm.substvars
+
+	# Python
+	mv debian/tmp/usr/lib/python debian/tmp/$(PYMODDIR)
+	#mv debian/tmp/usr/lib/_gdcmswig.so* debian/tmp/$(PYMODDIR)/dist-packages/
+
+ifeq ($(DEB_WRAP_CSHARP), 1)
+	#Csharp correct file name (Why did it change on most archs, and why not on kFreeBSD?)
+	test -f debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libgdcmsharpglue.so || \
+	mv debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/gdcmsharpglue.so debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libgdcmsharpglue.so
+endif
+
+override_dh_auto_install-indep:
+	DESTDIR=$(CURDIR)/debian/tmp/ cmake --build  obj-* --target Utilities/doxygen/install
+
+#override_dh_auto_install-arch:
+#	dh_install --list-missing
+
+override_dh_strip_nondeterminism:
+	dh_strip_nondeterminism -Xsharp
+
+override_dh_clideps:
+ifeq ($(DEB_WRAP_CSHARP), 1)
+	dh_clideps
+endif
+
+# No tests needed for docs
+override_dh_auto_test-indep:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	echo "No tests needed for docs"
+endif
+
+override_dh_auto_test-arch:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	echo "Do not run build time tests for this package"
+endif
+
+pkg_doc = gdcm-doc
+pkg_exa = gdcm-examples
+
+override_dh_compress:
+	# do not compress .map file for doxygen graph
+	dh_compress -X.map -X.pdf
+
+#TODO I cannot set documentation to separate build target as man page
+# depends on doc, and bin tools depends on man page
+
+debian/control: debian/control.in
+	sed -e"s/@PYVER@/$(PYVER)/g" -e "s/@DEB_MONO_ARCHS@/$(DEB_MONO_ARCHS)/g" $< > $@

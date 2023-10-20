@@ -1,15 +1,198 @@
-Source: template-repository
-Section: unknown
+Source: gdcm
+Maintainer: Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>
+Uploaders: Steve M. Robbins <smr@debian.org>,
+           Sébastien Jodogne <s.jodogne@gmail.com>,
+           Gert Wollny <gewo@debian.org>
+Section: libs
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends: castxml,
+               cli-common-dev [amd64 armel armhf i386 mipsel kfreebsd-amd64 kfreebsd-i386 powerpc ppc64 ppc64el s390x arm64] <!nocil>,
+               cmake,
+               debhelper-compat (= 13),
+               default-jdk [!hppa !hurd-any !kfreebsd-any],
+               default-jdk-headless,
+               dh-python,
+               dh-strip-nondeterminism,
+               docbook-xsl-ns,
+               javahelper,
+               libcharls-dev (>= 2.0),
+               libexpat-dev,
+               libjson-c-dev,
+               libopenjp2-7-dev,
+               libpapyrus3-dev,
+               libpoppler-private-dev,
+               libsocket++-dev,
+               libssl-dev,
+               libvtk9-dev,
+               libvtk9-qt-dev,
+               libxml2-dev,
+               libz-dev,
+               mono-devel [amd64 armel armhf i386 mipsel kfreebsd-amd64 kfreebsd-i386 powerpc ppc64 ppc64el s390x arm64] <!nocil>,
+               ninja-build,
+               pvrg-jpeg,
+               python3-dev,
+               python3-vtk9,
+               swig,
+               uuid-dev,
+               xsltproc
+Build-Depends-Indep: doxygen, doxygen-latex, ghostscript, graphviz, vtk9-doc
+Build-Conflicts: libopenjpeg-dev
+Standards-Version: 4.6.1
+Vcs-Browser: https://salsa.debian.org/med-team/gdcm
+Vcs-Git: https://salsa.debian.org/med-team/gdcm.git
+Homepage: http://gdcm.sourceforge.net/
 
-Package: template-repository
+Package: libgdcm3.0
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Description: Grassroots DICOM runtime libraries
+ Grassroots DiCoM is a C++ library for DICOM medical files. It is
+ automatically wrapped to python/C#/Java (using swig). It supports
+ RAW,JPEG (lossy/lossless),J2K,JPEG-LS, RLE and deflated. It also
+ comes with DICOM Part 3,6 & 7 of the standard as XML files.
+ .
+ This package contains the libraries needed to run GDCM applications.
+
+Package: libgdcm-tools
+Architecture: any
+Multi-Arch: foreign
+Section: utils
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Recommends: pvrg-jpeg
+Suggests: dcmtk, dicom3tools
+Description: Grassroots DICOM tools and utilities
+ Grassroots DiCoM is a C++ library for DICOM medical files. It is
+ automatically wrapped to python/C#/Java (using swig). It supports
+ RAW,JPEG (lossy/lossless),J2K,JPEG-LS, RLE and deflated.
+ .
+ Install this package for the gdcmanon, gdcmclean, gdcmconv, gdcmdiff,
+ gdcmdump, gdcmpap3, gdcmgendir, gdcmimg, gdcminfo, gdcmpdf, gdcmraw,
+ gdcmscanner, gdcmscu, gdcmtar, gdcmxml programs.
+
+Package: libgdcm-dev
+Architecture: any
+Section: libdevel
+Depends: libgdcm3.0 (= ${binary:Version}), ${misc:Depends}
+Breaks: libgdcm2-dev
+Replaces: libgdcm2-dev
+Description: Grassroots DICOM development libraries and headers
+ Grassroots DiCoM is a C++ library for DICOM medical files. It is
+ automatically wrapped to python/C#/Java (using swig). It supports
+ RAW,JPEG (lossy/lossless),J2K,JPEG-LS, RLE and deflated.
+ .
+ Headers and static libraries for libgdcm. These are not needed to use
+ GDCM, but are needed to build plugins or programs that link against
+ libgdcm.
+
+Package: libgdcm-cil
+Build-Profiles: <!nocil>
+Architecture: amd64 arm64 armel armhf i386 kfreebsd-amd64 kfreebsd-i386 mipsel powerpc ppc64 ppc64el s390x
+Section: cli-mono
+Depends: ${cli:Depends}, ${misc:Depends}, ${shlibs:Depends}
+Description: Grassroots DICOM CLI bindings
+ Grassroots DiCoM is a C++ library for DICOM medical files. It is
+ automatically wrapped to python/C#/Java (using swig). It supports
+ RAW,JPEG (lossy/lossless),J2K,JPEG-LS, RLE and deflated.
+ .
+ CLI bindings to the GDCM DICOM library. It allows developers to use
+ GDCM from C# environment.
+
+Package: python3-gdcm
+Architecture: any
+Section: python
+Depends: libgdcm3.0 (= ${binary:Version}),
+         ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends}
+Provides: ${python:Provides}
+Description: Grassroots DICOM Python bindings
+ Grassroots DiCoM is a C++ library for DICOM medical files. It is
+ automatically wrapped to python/C#/Java (using swig). It supports
+ RAW,JPEG (lossy/lossless),J2K,JPEG-LS, RLE and deflated.
+ .
+ Python bindings to the GDCM DICOM library.
+
+Package: libvtkgdcm-9.1
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Description: Grassroots DICOM VTK runtime libraries
+ Grassroots DiCoM is a C++ library for DICOM medical files. It is
+ automatically wrapped to python/C#/Java (using swig). It supports
+ RAW,JPEG (lossy/lossless),J2K,JPEG-LS, RLE and deflated.
+ .
+ Libvtkgdcm is a library that quickly allow programmer to use GDCM
+ from a VTK environment.
+
+Package: libvtkgdcm-dev
+Architecture: any
+Section: libdevel
+Depends: libgdcm-dev, libvtkgdcm-9.1 (= ${binary:Version}), ${misc:Depends}
+Breaks: libvtkgdcm2-dev
+Replaces: libvtkgdcm2-dev
+Description: Grassroots DICOM VTK development libraries and headers
+ Grassroots DiCoM is a C++ library for DICOM medical files. It is
+ automatically wrapped to python/C#/Java (using swig). It supports
+ RAW,JPEG (lossy/lossless),J2K,JPEG-LS, RLE and deflated.
+ .
+ Headers and static libraries for libvtkgdcm. These are not needed to
+ use GDCM, but are needed to build plugins or programs that link
+ against libvtkgdcm.
+
+Package: python3-vtkgdcm
+Architecture: any
+Section: python
+Depends: libvtkgdcm-9.1 (= ${binary:Version}),
+         ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends}
+Suggests: python3-gdcm
+Provides: ${python:Provides}
+Description: Grassroots DICOM VTK/Python bindings
+ Grassroots DiCoM is a C++ library for DICOM medical files. It is
+ automatically wrapped to python/C#/Java (using swig). It supports
+ RAW,JPEG (lossy/lossless),J2K,JPEG-LS, RLE and deflated.
+ .
+ VTK/Python bindings to the GDCM DICOM library.
+
+Package: libvtkgdcm-tools
+Architecture: any
+Multi-Arch: foreign
+Section: utils
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Suggests: libgdcm-tools
+Description: Grassroots DICOM VTK tools and utilities
+ Grassroots DiCoM is a C++ library for DICOM medical files. It is
+ automatically wrapped to python/C#/Java (using swig). It supports
+ RAW,JPEG (lossy/lossless),J2K,JPEG-LS, RLE and deflated.
+ .
+ Libvtkgdcm-tools provides a number of command line debugging and utility
+ tool. Install this package for the gdcmviewer, gdcm2pnm and gdcm2vtk
+ programs.
+
+Package: gdcm-doc
+Architecture: all
+Section: doc
+Depends: doc-base, vtk9-doc, ${misc:Depends}
+Description: Grassroots DICOM documentation
+ Grassroots DiCoM is a C++ library for DICOM medical files. It is
+ automatically wrapped to python/C#/Java (using swig). It supports
+ RAW,JPEG (lossy/lossless),J2K,JPEG-LS, RLE and deflated.
+ .
+ This is the documentation for gdcm and vtkgdcm
+
+Package: libgdcm-java
+Architecture: alpha amd64 arm64 armel armhf i386 ia64 m68k mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x sh4 sparc64 x32
+Section: java
+Depends: ${java:Depends}, ${misc:Depends}, ${shlibs:Depends}
+Suggests: java-virtual-machine
+Description: Grassroots DICOM Java bindings
+ Grassroots DiCoM is a C++ library for DICOM medical files. It is
+ automatically wrapped to python/C#/Java (using swig). It supports
+ RAW,JPEG (lossy/lossless),J2K,JPEG-LS, RLE and deflated.
+ .
+ Java bindings to the GDCM DICOM library. It allows developers to use
+ GDCM from Java environment.

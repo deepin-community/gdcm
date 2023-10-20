@@ -1,0 +1,12 @@
+Document: gdcm-doc
+Title: GDCM User's Guide
+Author: Mathieu Malaterre
+Abstract: Doxygen documentation of GDCM
+Section: Programming/C++
+
+Format: HTML
+Index: /usr/share/doc/gdcm-doc/html/index.xhtml
+Files: /usr/share/doc/gdcm-doc/html/*
+
+Format: PDF
+Files: /usr/share/doc/gdcm-doc/gdcm-3.pdf

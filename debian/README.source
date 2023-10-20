@@ -1,0 +1,3 @@
+GDCM ships a customized IJG lib (62 aka 6.b) with the famous lossless patch.
+We will be using GDCM SOVERSION to work around lintian issue.
+

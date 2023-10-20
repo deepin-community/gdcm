@@ -1,0 +1,47 @@
+#!/bin/bash
+set -e
+
+pkg=libgdcm3.0
+
+export LC_ALL=C.UTF-8
+if [ "${AUTOPKGTEST_TMP}" = "" ] ; then
+  AUTOPKGTEST_TMP=$(mktemp -d /tmp/${pkg}-test.XXXXXX)
+  trap "rm -rf ${AUTOPKGTEST_TMP}" 0 INT QUIT ABRT PIPE TERM
+fi
+
+cp -a /usr/share/doc/${pkg}/examples/* "${AUTOPKGTEST_TMP}"
+
+cd "${AUTOPKGTEST_TMP}"
+
+echo "6234a50361f02cb9a739755d63cdd673  output.dcm" >> checksums
+echo "ca2df89fe6e206514079597eb8ab070f  pixeldata.raw" >> checksums
+
+echo -e "\e[93m\e[1mRunning Tests\e[0m"
+
+gdcmanon --password password -e 00191113.dcm anon.dcm
+
+echo -e "\e[92m\e[1mPASS\e[0m"
+
+gdcminfo 00191113.dcm
+
+echo -e "\e[92m\e[1mPASS\e[0m"
+
+gdcmimg --fill 0 --region 0,100,0,100 -i 00191113.dcm -o output_black.dcm
+
+gdcmconv 00191113.dcm output.dcm
+
+gdcmraw -i 00191113.dcm -o pixeldata.raw
+
+md5sum --check checksums
+
+#check for output file since md5hash varies in s390
+if [ -f "output_black.dcm" ]; then
+    echo -e "\e[92m\e[1mPASS\e[0m"
+else
+    echo -e "\e[1;31FAILED!"
+fi
+
+gdcmdump output.dcm
+
+echo -e "\e[92m\e[1mPASS\e[0m"
+

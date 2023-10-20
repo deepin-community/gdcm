@@ -1,0 +1,5 @@
+Tests for gdcm
+=================
+
+The data for tests has been referenced from:
+	https://sourceforge.net/p/gdcm/gdcmdata/ci/master/tree/gdcm-US-ALOKA-16.dcm

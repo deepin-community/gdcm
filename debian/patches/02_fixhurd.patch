@@ -1,0 +1,31 @@
+Description: Fix compilation on GNU/Hurd
+ According to explanation from:
+ http://www.gnu.org/software/hurd/hurd/porting/guidelines.html#GNU_specific_define_tt_
+Author: Mathieu Malaterre <malat@debian.org>
+
+--- a/Source/Common/gdcmSystem.cxx
++++ b/Source/Common/gdcmSystem.cxx
+@@ -461,6 +461,10 @@
+ #endif
+ }
+ 
++#ifndef PATH_MAX
++#define PATH_MAX 4096
++#endif
++
+ // return size of file; also returns zero if no file exists
+ size_t System::FileSize(const char* filename)
+ {
+--- a/Source/DataDictionary/gdcmGlobal.cxx
++++ b/Source/DataDictionary/gdcmGlobal.cxx
+@@ -138,6 +138,10 @@
+ #define PATH_MAX 4096
+ #endif
+ 
++#ifndef PATH_MAX
++#define PATH_MAX 4096
++#endif
++
+ const char *Global::Locate(const char *resfile) const
+ {
+ #ifdef _WIN32

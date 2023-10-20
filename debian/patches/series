@@ -1,0 +1,4 @@
+rename-pdf.patch
+02_fixhurd.patch
+03_linkvtkdoc.patch
+04_multiarch.patch
