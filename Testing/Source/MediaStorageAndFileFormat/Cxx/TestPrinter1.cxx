@@ -299,7 +299,7 @@ int TestPrint(const char *filename, bool verbose= false)
       }
     }
   char digest[33];
-  gdcm::Testing::ComputeMD5(&buf[0], buf.size(), digest);
+  gdcm::Testing::ComputeMD5(buf.data(), buf.size(), digest);
 
   unsigned int i = 0;
   const char *p = printmd5[i][1];
@@ -319,7 +319,7 @@ int TestPrint(const char *filename, bool verbose= false)
     std::cerr << "Problem with : " << name << " missing md5= " << digest << std::endl;
     return 1;
     }
-  if( strcmp( refmd5, digest) )
+  if( strcmp( refmd5, digest) != 0 )
     {
     std::cerr << "Problem with : " << name << " " << refmd5 << " vs " << digest << std::endl;
     return 1;

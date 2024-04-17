@@ -19,9 +19,9 @@
 #elif defined(GDCM_BUILD_TESTING)
 #include "gdcm_md5.h"
 #endif
+#include <cstdio>
 #include <fstream>
 #include <vector>
-#include <stdio.h>
 #if defined(_MSC_VER) && (_MSC_VER < 1900)
 #define snprintf _snprintf
 #endif
@@ -94,7 +94,7 @@ static bool process_file(const char *filename, md5_byte_t *digest)
   const size_t file_size = System::FileSize(filename);
   std::vector<char> v( file_size );
 
-  char *buffer = &v[0];
+  char *buffer = v.data();
   file.read(buffer, file_size);
 
   md5_state_t state;

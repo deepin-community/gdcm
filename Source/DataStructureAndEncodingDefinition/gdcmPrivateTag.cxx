@@ -15,7 +15,7 @@
 #include "gdcmTrace.h"
 #include "gdcmSystem.h" // FIXME
 
-#include <stdio.h> // sscanf
+#include <cstdio> // sscanf
 #include <limits> // numeric_limits
 
 namespace gdcm_ns
@@ -42,7 +42,7 @@ namespace gdcm_ns
     SetElement( (uint8_t)element );
     const char *owner = str + nchar;
     SetOwner( owner );
-    const bool hasBackslash = strchr(owner,'\\') != NULL;
+    const bool hasBackslash = strchr(owner,'\\') != nullptr;
     const char * creator = GetOwner();
     if( !*creator || hasBackslash )
       {

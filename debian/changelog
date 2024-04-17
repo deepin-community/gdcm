@@ -1,3 +1,17 @@
+gdcm (3.0.22-2) unstable; urgency=medium
+
+  * d/patches: Revert changes breaking binary ABI. Closes: #1056953
+
+ -- Mathieu Malaterre <malat@debian.org>  Thu, 07 Dec 2023 10:37:28 +0100
+
+gdcm (3.0.22-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 3.0.22
+  * d/patches: Fix compilation with charls. Closes: #1054696
+
+ -- Mathieu Malaterre <malat@debian.org>  Mon, 30 Oct 2023 15:36:49 +0100
+
 gdcm (3.0.21-2) unstable; urgency=medium
 
   * d/rules: Hack to work around FTBFS. Closes: #1042246
