@@ -2,3 +2,5 @@ rename-pdf.patch
 02_fixhurd.patch
 03_linkvtkdoc.patch
 04_multiarch.patch
+6631a74c39145b71dedcbe07c43bd6b1631b100d.patch
+dircos_rev.patch

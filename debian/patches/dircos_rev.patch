@@ -1,0 +1,30 @@
+Description: Revert gdcmDirectionCosines destructor change
+Author: Gianfranco Costamagna <locutusofborg@debian.org>
+Bug-Debian: https://bugs.debian.org/1056953
+Origin: upstream
+Forwarded: no
+Reviewed-By: Mathieu Malaterre <malat@debian.org>
+Last-Update: 2023-12-07
+
+--- gdcm-3.0.22.orig/Source/MediaStorageAndFileFormat/gdcmDirectionCosines.cxx
++++ gdcm-3.0.22/Source/MediaStorageAndFileFormat/gdcmDirectionCosines.cxx
+@@ -40,6 +40,8 @@ DirectionCosines::DirectionCosines(const
+   Values[5] = dircos[5];
+ }
+ 
++DirectionCosines::~DirectionCosines() = default;
++
+ void DirectionCosines::Print(std::ostream &os) const
+ {
+   os << Values[0] << ",";
+--- gdcm-3.0.22.orig/Source/MediaStorageAndFileFormat/gdcmDirectionCosines.h
++++ gdcm-3.0.22/Source/MediaStorageAndFileFormat/gdcmDirectionCosines.h
+@@ -29,7 +29,7 @@ public:
+   DirectionCosines(const double dircos[6]);
+   // Cannot get the following signature to be wrapped with swig...
+   //DirectionCosines(const double *dircos = 0 );
+-  ~DirectionCosines() = default;
++  ~DirectionCosines();
+ 
+   /// Print
+   void Print(std::ostream &) const;

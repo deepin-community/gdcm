@@ -80,10 +80,7 @@ bool ULConnectionManager::EstablishConnection(const std::string& inAETitle,
     return false;
     }
 
-  if (mConnection != nullptr)
-    {
-    delete mConnection;
-    }
+  delete mConnection;
   mConnection = new ULConnection(connectInfo);
 
   mConnection->GetTimer().SetTimeout(inTimeout);
@@ -336,7 +333,7 @@ bool ULConnectionManager::EstablishConnectionMove(const std::string& inAETitle,
       std::vector<BasePDU*>::iterator itor;
       for (itor = thePDUs.begin(); itor != thePDUs.end(); itor++)
         {
-        if (*itor == NULL) continue; //can have a nulled pdu, apparently
+        if (*itor == nullptr) continue; //can have a nulled pdu, apparently
         (*itor)->Print(Trace::GetStream());
         }
     }
@@ -565,7 +562,7 @@ void ULConnectionManager::BreakConnectionNow(){
 EStateID ULConnectionManager::RunMoveEventLoop(ULEvent& currentEvent, ULConnectionCallback* inCallback){
   gdcmDebugMacro( "Start RunMoveEventLoop" );
   EStateID theState = eStaDoesNotExist;
-  bool waitingForEvent;
+  bool waitingForEvent = false;
   EEventID raisedEvent;
 
   bool receivingData = false;
