@@ -1,6 +1,8 @@
---- a/Utilities/doxygen/CMakeLists.txt
-+++ b/Utilities/doxygen/CMakeLists.txt
-@@ -160,6 +160,7 @@
+Index: gdcm-fix2/Utilities/doxygen/CMakeLists.txt
+===================================================================
+--- gdcm-fix2.orig/Utilities/doxygen/CMakeLists.txt
++++ gdcm-fix2/Utilities/doxygen/CMakeLists.txt
+@@ -160,6 +160,7 @@ if(GDCM_DOCUMENTATION)
      install(FILES
        ${CMAKE_CURRENT_BINARY_DIR}/latex/gdcm-${GDCM_VERSION}.pdf
        DESTINATION ${GDCM_INSTALL_DOC_DIR}

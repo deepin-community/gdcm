@@ -4,3 +4,9 @@ rename-pdf.patch
 04_multiarch.patch
 6631a74c39145b71dedcbe07c43bd6b1631b100d.patch
 dircos_rev.patch
+CVE-2025-11266.patch
+CVE-2025-48429.patch
+CVE-2025-52582.patch
+CVE-2025-53618.patch
+CVE-2025-53619.patch
+CVE-2026-3650.patch
