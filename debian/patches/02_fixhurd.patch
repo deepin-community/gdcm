@@ -3,9 +3,11 @@ Description: Fix compilation on GNU/Hurd
  http://www.gnu.org/software/hurd/hurd/porting/guidelines.html#GNU_specific_define_tt_
 Author: Mathieu Malaterre <malat@debian.org>
 
---- a/Source/Common/gdcmSystem.cxx
-+++ b/Source/Common/gdcmSystem.cxx
-@@ -461,6 +461,10 @@
+Index: gdcm-fix2/Source/Common/gdcmSystem.cxx
+===================================================================
+--- gdcm-fix2.orig/Source/Common/gdcmSystem.cxx
++++ gdcm-fix2/Source/Common/gdcmSystem.cxx
+@@ -460,6 +460,10 @@ std::wstring System::ConvertToUNC(const
  #endif
  }
  
@@ -16,9 +18,11 @@ Author: Mathieu Malaterre <malat@debian.org>
  // return size of file; also returns zero if no file exists
  size_t System::FileSize(const char* filename)
  {
---- a/Source/DataDictionary/gdcmGlobal.cxx
-+++ b/Source/DataDictionary/gdcmGlobal.cxx
-@@ -138,6 +138,10 @@
+Index: gdcm-fix2/Source/DataDictionary/gdcmGlobal.cxx
+===================================================================
+--- gdcm-fix2.orig/Source/DataDictionary/gdcmGlobal.cxx
++++ gdcm-fix2/Source/DataDictionary/gdcmGlobal.cxx
+@@ -138,6 +138,10 @@ bool Global::Prepend(const char *path)
  #define PATH_MAX 4096
  #endif
  

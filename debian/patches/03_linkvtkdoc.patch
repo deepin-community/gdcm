@@ -5,9 +5,11 @@ Description: Correct use of scripts from vtk7-doc
  Merged to one patch because they overlap partially. 
 Author: Gert Wollny <gw.fossdev@gmail.com>, Mathieu Malaterre <malat@debian.org>
 
---- a/Utilities/doxygen/vtk/CMakeLists.txt
-+++ b/Utilities/doxygen/vtk/CMakeLists.txt
-@@ -22,7 +22,7 @@
+Index: gdcm-fix2/Utilities/doxygen/vtk/CMakeLists.txt
+===================================================================
+--- gdcm-fix2.orig/Utilities/doxygen/vtk/CMakeLists.txt
++++ gdcm-fix2/Utilities/doxygen/vtk/CMakeLists.txt
+@@ -22,7 +22,7 @@ mark_as_advanced(VTK_DIR)
      set (QT_TAG_FILE "${CMAKE_CURRENT_BINARY_DIR}/Qt.tag")
    endif ()
    set(BUILD_DOXYGEN ON)
@@ -16,7 +18,7 @@ Author: Gert Wollny <gw.fossdev@gmail.com>, Mathieu Malaterre <malat@debian.org>
    set(DOCUMENTATION_HTML_TARZ ON)
    set(DOXYGEN_PROJECT_NAME "vtkgdcm")
    if(VTK_SOURCE_DIR)
-@@ -35,8 +35,8 @@
+@@ -35,8 +35,8 @@ mark_as_advanced(VTK_DIR)
        # sudo apt-get install vtk-doc
    if(EXISTS "/usr/share/doc/vtk-doc/html")
    set(DOXYGEN_SOURCE_DIR "/usr/share/doc/vtk-doc/html")
@@ -27,7 +29,7 @@ Author: Gert Wollny <gw.fossdev@gmail.com>, Mathieu Malaterre <malat@debian.org>
    else()
    message(ERROR "DOXYGEN_SOURCE_DIR need to be set.")
    endif()
-@@ -97,7 +97,7 @@
+@@ -97,7 +97,7 @@ mark_as_advanced(VTK_DIR)
      get_filename_component(DOT_PATH ${DOT} PATH)
    endif()
  
@@ -36,9 +38,11 @@ Author: Gert Wollny <gw.fossdev@gmail.com>, Mathieu Malaterre <malat@debian.org>
    if(INCLUDE_QT_DOCUMENTATION)
      set (TAGFILES "${TAGFILES} \"${QT_TAG_FILE}=http://doc.trolltech.com/4.2\"")
    endif()
---- a/Utilities/doxygen/vtk/doc_makeall.sh.in
-+++ b/Utilities/doxygen/vtk/doc_makeall.sh.in
-@@ -42,7 +42,7 @@
+Index: gdcm-fix2/Utilities/doxygen/vtk/doc_makeall.sh.in
+===================================================================
+--- gdcm-fix2.orig/Utilities/doxygen/vtk/doc_makeall.sh.in
++++ gdcm-fix2/Utilities/doxygen/vtk/doc_makeall.sh.in
+@@ -42,7 +42,7 @@ export PROJECT_NAME=@DOXYGEN_PROJECT_NAM
  # Example:
  #   PATH_TO_VTK_DOX_SCRIPTS=@CMAKE_CURRENT_SOURCE_DIR@
  #
@@ -47,7 +51,7 @@ Author: Gert Wollny <gw.fossdev@gmail.com>, Mathieu Malaterre <malat@debian.org>
  
  export PATH_TO_VTKGDCM_FINAL_PATH="@VTKGDCM_FINAL_PATH@"
  
-@@ -169,12 +169,12 @@
+@@ -169,12 +169,12 @@ cd "${DOXTEMP}" || echoexit "Cannot find
  # Convert the VTK headers to the Doxygen format.
  echo "Convert the VTK headers to the Doxygen format."
  if test "x$PERL_PROG" != "xNOTFOUND" ; then
@@ -62,7 +66,7 @@ Author: Gert Wollny <gw.fossdev@gmail.com>, Mathieu Malaterre <malat@debian.org>
          --to "$INTERMEDIATE_DOX_DIR" \
          --relativeto "@DOXYGEN_BINARY_LOCATIONS_DIR@" \
          @DOXYGEN_BINARY_LOCATIONS@ || echoexit "Problem converting VTK headers"
-@@ -186,13 +186,16 @@
+@@ -186,13 +186,16 @@ echo "Convert the VTK headers to the Dox
  # Build the full-text index.
  echo "Build the full-text index."
  if test "x$PERL_PROG" != "xNOTFOUND" ; then
@@ -80,7 +84,7 @@ Author: Gert Wollny <gw.fossdev@gmail.com>, Mathieu Malaterre <malat@debian.org>
  fi
  echo "Build the full-text index - done"
  
-@@ -201,7 +204,7 @@
+@@ -201,7 +204,7 @@ echo "Build the full-text index - done"
  #  # demos that use that class.
  
  #  if test "x$PERL_PROG" != "xNOTFOUND" ; then
@@ -89,9 +93,11 @@ Author: Gert Wollny <gw.fossdev@gmail.com>, Mathieu Malaterre <malat@debian.org>
  #          --datamatch "\W((VTK|ParaView)_DATA_ROOT|(VTK|MedVIP)Data|(vtk)?GetDataRoot|ExpandDataFileName)\W" \
  #          --dataicon "paper-clip.gif" \
  #          --dirmatch "^demos$" \
---- a/Utilities/doxygen/vtk/doxyfile.in
-+++ b/Utilities/doxygen/vtk/doxyfile.in
-@@ -23,6 +23,7 @@
+Index: gdcm-fix2/Utilities/doxygen/vtk/doxyfile.in
+===================================================================
+--- gdcm-fix2.orig/Utilities/doxygen/vtk/doxyfile.in
++++ gdcm-fix2/Utilities/doxygen/vtk/doxyfile.in
+@@ -23,6 +23,7 @@ PDF_HYPERLINKS       = YES
  HAVE_DOT             = YES
  #HAVE_DOT            = NO
  DOT_PATH             = "@DOT_PATH@"

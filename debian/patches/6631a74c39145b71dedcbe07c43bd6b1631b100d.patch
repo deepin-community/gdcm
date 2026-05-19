@@ -10,10 +10,9 @@ Subject: [PATCH] Use charls cmake config, expect version >= 2.2.0
  3 files changed, 6 insertions(+), 45 deletions(-)
  delete mode 100644 CMake/FindCharLS.cmake
 
-diff --git a/CMake/FindCharLS.cmake b/CMake/FindCharLS.cmake
-deleted file mode 100644
-index 8f6bf196f4..0000000000
---- a/CMake/FindCharLS.cmake
+Index: gdcm-fix2/CMake/FindCharLS.cmake
+===================================================================
+--- gdcm-fix2.orig/CMake/FindCharLS.cmake
 +++ /dev/null
 @@ -1,40 +0,0 @@
 -#
@@ -56,11 +55,11 @@ index 8f6bf196f4..0000000000
 -  CHARLS_LIBRARY
 -  CHARLS_INCLUDE_DIR
 -  )
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index d96fc7ad69..44531b695e 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -319,7 +319,7 @@ option(GDCM_USE_SYSTEM_PAPYRUS3 "Use system papyrus3" OFF)
+Index: gdcm-fix2/CMakeLists.txt
+===================================================================
+--- gdcm-fix2.orig/CMakeLists.txt
++++ gdcm-fix2/CMakeLists.txt
+@@ -319,7 +319,7 @@ option(GDCM_USE_SYSTEM_PAPYRUS3 "Use sys
  option(GDCM_USE_SYSTEM_SOCKETXX "Use system socket++" OFF)
  option(GDCM_USE_SYSTEM_LJPEG "Use system ljpeg (ijg lib)" OFF)
  option(GDCM_USE_SYSTEM_OPENJPEG "Use system openjpeg" OFF)
@@ -81,10 +80,10 @@ index d96fc7ad69..44531b695e 100644
  else()
    set(GDCM_CHARLS_LIBRARIES gdcmcharls)
  endif()
-diff --git a/Utilities/gdcm_charls.h b/Utilities/gdcm_charls.h
-index b80451c490..d2b8d6a78e 100644
---- a/Utilities/gdcm_charls.h
-+++ b/Utilities/gdcm_charls.h
+Index: gdcm-fix2/Utilities/gdcm_charls.h
+===================================================================
+--- gdcm-fix2.orig/Utilities/gdcm_charls.h
++++ gdcm-fix2/Utilities/gdcm_charls.h
 @@ -17,8 +17,8 @@
  /* Use the charls library configured for gdcm.  */
  #include "gdcmTypes.h"
